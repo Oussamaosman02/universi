@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins&family=Roboto&display=swap');
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.textos {
+  /*titulo bueno*/
+  font-family: 'Popins', sans-serif;
+}
+.textos2 {
+  /*Titulos*/
+  font-family: 'Roboto', sans-serif;
+}
+.textos3 {
+  /*texto*/
+  font-family: 'Open Sans', sans-serif;
+}
+li {
+  list-style: none;
+}
+html,
+body {
+  background-color: white;
+  font-family: 'Open Sans', sans-serif;
+}
