@@ -1,7 +1,8 @@
-import Head from "next/head";
-import { useRef, useState } from "react";
-import { Crear, Iniciar } from "../components/firebase";
-import styles from "../styles/Home.module.css";
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { useRef, useState, useEffect } from 'react';
+import { Crear, Iniciar } from '../components/firebase';
+import styles from '../styles/Home.module.css';
 
 export default function Home2() {
   const entrusu = useRef();
@@ -10,16 +11,22 @@ export default function Home2() {
   const regpass = useRef();
   const [est, setEst] = useState(false);
   const [estd, setEstd] = useState(false);
+  const rut = useRouter();
+
+  useEffect(() => {
+    const aut = localStorage.getItem('aut');
+    if (aut) {
+      rut.push('/ajustes');
+    }
+  });
   const handleSubmit = (e) => {
     e.preventDefault();
     const todo = Crear(entrusu.current.value, entrpass.current.value);
     setEst(true);
-    alert("inicia sesion");
   };
   const handleSubmitIni = (e) => {
     e.preventDefault();
     const todos = Iniciar(regusu.current.value, regpass.current.value);
-    console.log(todos);
     setEstd(false);
   };
 
@@ -37,7 +44,7 @@ export default function Home2() {
                 handleSubmit(e);
               }}
             >
-              <h3>Iniciar Sesion</h3>
+              <h3>Registrar</h3>
               <hr />
               <input
                 required
@@ -60,7 +67,7 @@ export default function Home2() {
                 handleSubmitIni(e);
               }}
             >
-              <h3>Registrarte</h3>
+              <h3>Iniciar sesion</h3>
               <hr />
               <input type="email" required ref={regusu} placeholder="Usuario" />
               <input
