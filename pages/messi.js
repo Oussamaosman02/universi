@@ -1,11 +1,12 @@
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-import { useRef, useState, useEffect } from 'react';
-import { Crear, Iniciar } from '../components/firebase';
-import styles from '../styles/Home.module.css';
+import Head from "next/head";
+import { useRouter } from "next/router";
+import { useRef, useState, useEffect } from "react";
+import { Crear, Iniciar } from "../components/firebase";
+import styles from "../styles/Home.module.css";
 
 export default function Home2() {
   const entrusu = useRef();
+  const entrusun = useRef();
   const entrpass = useRef();
   const regusu = useRef();
   const regpass = useRef();
@@ -13,14 +14,18 @@ export default function Home2() {
   const [estd, setEstd] = useState(false);
   const rut = useRouter();
   useEffect(() => {
-    const aut = localStorage.getItem('aut');
+    const aut = localStorage.getItem("aut");
     if (aut) {
-      rut.push('/ajustes');
+      rut.push("/ajustes");
     }
   });
   const handleSubmit = (e) => {
     e.preventDefault();
-    const todo = Crear(entrusu.current.value, entrpass.current.value);
+    const todo = Crear(
+      entrusu.current.value,
+      entrpass.current.value,
+      entrusun.current.value
+    );
     setEst(true);
   };
   const handleSubmitIni = (e) => {
@@ -44,12 +49,14 @@ export default function Home2() {
             >
               <h3>Registrar</h3>
               <hr />
+              <input required ref={entrusun} type="text" placeholder="Nombre" />
               <input
                 required
                 ref={entrusu}
                 type="email"
                 placeholder="Usuario"
               />
+
               <input
                 required
                 ref={entrpass}
