@@ -12,7 +12,6 @@ export default function Home2() {
   const [est, setEst] = useState(false);
   const [estd, setEstd] = useState(false);
   const rut = useRouter();
-
   useEffect(() => {
     const aut = localStorage.getItem('aut');
     if (aut) {
@@ -29,7 +28,6 @@ export default function Home2() {
     const todos = Iniciar(regusu.current.value, regpass.current.value);
     setEstd(false);
   };
-
   return (
     <div className={styles.container}>
       <Head>

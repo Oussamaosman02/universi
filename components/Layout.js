@@ -1,7 +1,7 @@
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import styles from "../styles/layout.module.css";
+import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import styles from '../styles/layout.module.css';
 
 export default function Layout({ children }) {
   const router = useRouter();
@@ -20,7 +20,7 @@ export default function Layout({ children }) {
               <Link href="/messi">
                 <div className="iconos">
                   <Image
-                    src={`/icons/homa_${ruta === "/messi" ? "f" : "nf"}.png`}
+                    src={`/icons/homa_${ruta === '/messi' ? 'f' : 'nf'}.png`}
                     width={48}
                     height={48}
                     layout="responsive"
@@ -32,7 +32,7 @@ export default function Layout({ children }) {
               <Link href="/">
                 <div className="iconos">
                   <Image
-                    src={`/icons/school_${ruta === "/" ? "f" : "nf"}.png`}
+                    src={`/icons/school_${ruta === '/' ? 'f' : 'nf'}.png`}
                     width={48}
                     height={48}
                     layout="responsive"
@@ -45,7 +45,7 @@ export default function Layout({ children }) {
                 <div className="iconos">
                   <Image
                     src={`/icons/settings_${
-                      ruta === "/ajustes" ? "f" : "nf"
+                      ruta === '/ajustes' ? 'f' : 'nf'
                     }.png`}
                     width={48}
                     height={48}
