@@ -1,33 +1,21 @@
-import Head from "next/head";
-import { useRouter } from "next/router";
-import { useRef, useState, useEffect } from "react";
-import { Crear, Iniciar } from "../components/firebase";
-import styles from "../styles/Home.module.css";
+import Head from 'next/head';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useRef, useState, useEffect } from 'react';
+import { Iniciar } from '../components/firebase';
+import styles from '../styles/Home.module.css';
 
 export default function Home2() {
-  const entrusu = useRef();
-  const entrusun = useRef();
-  const entrpass = useRef();
   const regusu = useRef();
   const regpass = useRef();
-  const [est, setEst] = useState(false);
   const [estd, setEstd] = useState(false);
   const rut = useRouter();
   useEffect(() => {
-    const aut = localStorage.getItem("aut");
+    const aut = localStorage.getItem('aut');
     if (aut) {
-      rut.push("/ajustes");
+      rut.push('/ajustes');
     }
   });
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const todo = Crear(
-      entrusu.current.value,
-      entrpass.current.value,
-      entrusun.current.value
-    );
-    setEst(true);
-  };
   const handleSubmitIni = (e) => {
     e.preventDefault();
     const todos = Iniciar(regusu.current.value, regpass.current.value);
@@ -41,31 +29,6 @@ export default function Home2() {
       <div className={styles.main}>
         <h1>Entrar</h1>
         <section>
-          <article>
-            <form
-              onSubmit={(e) => {
-                handleSubmit(e);
-              }}
-            >
-              <h3>Registrar</h3>
-              <hr />
-              <input required ref={entrusun} type="text" placeholder="Nombre" />
-              <input
-                required
-                ref={entrusu}
-                type="email"
-                placeholder="Usuario"
-              />
-
-              <input
-                required
-                ref={entrpass}
-                type="password"
-                placeholder="contraseña"
-              />
-              <button disabled={est}>Enviar</button>
-            </form>
-          </article>
           <article>
             <form
               onSubmit={(e) => {
@@ -83,6 +46,9 @@ export default function Home2() {
               />
               <button disabled={estd}>Enviar</button>
             </form>
+            <Link href="/registro">
+              <a>Registrarse</a>
+            </Link>
           </article>
         </section>
       </div>
